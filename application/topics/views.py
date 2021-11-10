@@ -5,7 +5,6 @@ from application.topics.models import Topic, WinnerTopic
 # Add a topic
 @app.route('/add', methods=['POST'])
 def add_topic():
-    print(request.form)
     name = str(request.form['name'])
     created_by = str(request.form['created_by'])
     try:
