@@ -91,7 +91,10 @@ def vote_topic(id):
             db.session.commit()
             return jsonify({'success': 'vote added'})
         else:
-            return jsonify({'success': 'cannot vote two times'})
+            votes['users'].remove(user)
+            topic.votes = json.dumps(votes)
+            db.session.commit()
+            return jsonify({'success': 'vote removed'})
     except:
         abort(404)
 
